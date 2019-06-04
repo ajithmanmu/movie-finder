@@ -1,0 +1,36 @@
+.movie-finder__home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid green;
+}
+.movie-finder__header {
+    display: flex;
+    margin: 20px;
+}
+.movie-finder__searchbar {
+    margin: 20px 0px;   
+}
+.movie-finder__searchbar input {
+    margin: 0px 20px;
+}
+
+.movie-finder__list { 
+    display: flex;
+    flex-direction: column;
+}
+.movie-finder__movieclip {
+    display: flex
+}
+.movie-finder__movie_details {
+    display: flex;
+    margin: 20px 20px;
+    flex-direction: column;
+    border: 1px solid black;
+}
+.movie-finder__movie_results{
+    margin: 30px;
+    border: 1px solid red;
+    min-width: 450px;
+}
