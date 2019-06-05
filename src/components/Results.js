@@ -5,10 +5,11 @@ import MovieLists from './MovieLists';
 
 class Results extends Component {
     render() {
+        const { movies } = this.props;
         return (
             <div className="movie-finder__movie_results">
                 <MovieDetails/>
-                <MovieLists />
+                <MovieLists movies={movies} />
             </div>
         );
     }

@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
-
-const imageClipStyle = {
-    backgroundImage: 'url(https://dz7u9q3vpd4eo.cloudfront.net/wp-content/legacy/posts/e03c2f9c-cbd8-4097-a0fd-5780e5c7ba58.jpg)',
-    width: '200px',
-    height: '100px',
-    margin: '20px'
-}
+import { generatePosterPath } from '../common/util';
 
 class MovieClip extends Component {
     render() {
+        const { movie } = this.props;
+        const { title, release_date, vote_average, poster_path} = movie;
+        const posterPath = generatePosterPath('w154', poster_path);
+        const imageClipStyle = {
+            backgroundImage: `url(${posterPath})`,
+            width: '200px',
+            height: '100px',
+            margin: '20px'
+        }
         return (
             <div className="movie-finder__movieclip" style={imageClipStyle}>
-                <label>Batman Returns</label>
+                <label>{title}</label>
             </div>
         );
     }
