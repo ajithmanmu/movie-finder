@@ -23,3 +23,7 @@ const parseRequest = (resp) => new Promise(async (resolve, reject) => {
 export const getMovies = async () => {
     return await fetch(`${BASE_URL}discover/movie?api_key=${MOVIE_DB_API_KEY}`).then(parseRequest);
 };
+
+export const searchMovies = async (text) => {
+    return await fetch(`${BASE_URL}search/movie?api_key=${MOVIE_DB_API_KEY}&query=${text}`).then(parseRequest);
+};

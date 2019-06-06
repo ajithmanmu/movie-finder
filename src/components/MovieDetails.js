@@ -4,9 +4,14 @@ class MovieDetails extends Component {
     render() {
         return (
             <div className="movie-finder__movie_details">
-                <div><label>Name:</label><label>Batman</label></div>
-                <div><label>Year:</label><label>1983</label></div>
-                <div><label>Rating:</label><label>4.9/5</label></div>
+                <div><label>Showing results for: </label><label>Latest Trends</label></div>
+                <div>
+                <label>SORT BY: </label>
+                    <select>
+                        <option>Year</option>
+                        <option>Rating</option>
+                    </select>
+                </div>
             </div>
         );
     }
