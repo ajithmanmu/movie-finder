@@ -26,6 +26,7 @@
     width: 200px;
     height: 100px;
     margin: 20px;
+    cursor: pointer;
 }
 .movie-finder__movie_details {
     display: flex;
@@ -39,3 +40,20 @@
     border: 1px solid red;
     min-width: 450px;
 }
+.movie-finder__movie_thumbnail{
+    margin: 30px;
+    border: 1px solid red;
+    min-width: 450px;
+}
+.movie-finder__movie_thumbnail label{
+    margin: 20px;
+}
+.thumbnail_close_icon {
+    margin: 10px;
+    background: teal;
+    width: 23px;
+    height: 36px;
+    position: relative;
+    font-size: 30px;
+    cursor: pointer;
+  }

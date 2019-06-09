@@ -4,11 +4,11 @@ import MovieClip from './MovieClip';
 // const movies = [1,2,3,4];
 class MovieLists extends Component {
     render() {
-        const { movies } = this.props;
+        const { movies, handleMovieClipClick } = this.props;
         return (
             <div className="movie-finder__list">
             {
-                movies.map((movie)=><MovieClip movie={movie} />)
+                movies.map((movie)=><MovieClip movie={movie} handleMovieClipClick={handleMovieClipClick} />)
             }  
             </div>
         );

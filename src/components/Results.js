@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import MovieDetails from './MovieDetails';
 import MovieLists from './MovieLists';
-
+import MovieThumbNail from './MovieThumbNail';
 
 class Results extends Component {
     render() {
-        const { movies } = this.props;
+        const { movies, handleMovieClipClick, selectedMovie, closeThumbNail } = this.props;
         return (
             <div className="movie-finder__movie_results">
                 <MovieDetails/>
-                <MovieLists movies={movies} />
+                {
+                    selectedMovie ? 
+                    <MovieThumbNail selectedMovie={selectedMovie} closeThumbNail={closeThumbNail} />
+                    :
+                    <MovieLists movies={movies} handleMovieClipClick={handleMovieClipClick} /> 
+                }
+                
             </div>
         );
     }

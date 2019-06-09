@@ -10,6 +10,7 @@ class Home extends Component {
         super(props);
         this.state = {
             movies: [],
+            selectedMovie: null,
         }
     }
     async componentDidMount(){
@@ -26,13 +27,24 @@ class Home extends Component {
             movies
         })
     };
+    handleMovieClipClick = (movie) => {
+        this.setState ({
+            selectedMovie: movie
+        });
+    };
+    closeThumbNail = () => {
+        this.setState ({
+            selectedMovie: null
+        });
+    }
+
     render(){
-        const { movies } = this.state;
+        const { movies, selectedMovie } = this.state;
         return(
             <div className="movie-finder__home">
                 <Header/>
                 <SearchBar search={this.search} />
-                <Results movies={movies}/>
+                <Results movies={movies} handleMovieClipClick={this.handleMovieClipClick} selectedMovie={selectedMovie} closeThumbNail={this.closeThumbNail}/>
             </div>
         )
     }
