@@ -5,10 +5,10 @@ import MovieThumbNail from './MovieThumbNail';
 
 class Results extends Component {
     render() {
-        const { movies, handleMovieClipClick, selectedMovie, closeThumbNail } = this.props;
+        const { movies, handleMovieClipClick, selectedMovie, closeThumbNail, sortMovies } = this.props;
         return (
             <div className="movie-finder__movie_results">
-                <MovieDetails/>
+                <MovieDetails sortMovies={sortMovies}/>
                 {
                     selectedMovie ? 
                     <MovieThumbNail selectedMovie={selectedMovie} closeThumbNail={closeThumbNail} />

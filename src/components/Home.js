@@ -37,6 +37,15 @@ class Home extends Component {
             selectedMovie: null
         });
     }
+    sortMovies = (sort) => {
+        const { movies } = this.state;
+        const sortedMovies = sort === 'Year' ? movies.sort((m1, m2)=>new Date(m1.release_date) - new Date(m2.release_date))
+            :
+            movies.sort((m1, m2)=> m1.popularity - m2.popularity);
+        this.setState ({
+            movies: sortedMovies
+        });
+    };
 
     render(){
         const { movies, selectedMovie } = this.state;
@@ -44,7 +53,7 @@ class Home extends Component {
             <div className="movie-finder__home">
                 <Header/>
                 <SearchBar search={this.search} />
-                <Results movies={movies} handleMovieClipClick={this.handleMovieClipClick} selectedMovie={selectedMovie} closeThumbNail={this.closeThumbNail}/>
+                <Results movies={movies} handleMovieClipClick={this.handleMovieClipClick} selectedMovie={selectedMovie} closeThumbNail={this.closeThumbNail} sortMovies={this.sortMovies}/>
             </div>
         )
     }
