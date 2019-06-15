@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Input, InputGroup } from 'reactstrap';
 
 class SearchBar extends Component {
     constructor(props){
@@ -20,8 +21,10 @@ class SearchBar extends Component {
     render() {
         return (
             <div className="movie-finder__searchbar">
-                <input type="text" value={this.state.searchText} onChange={(e)=>this.handleChange(e)} />
-                <button onClick={this.doSearch}>Search</button>
+            <InputGroup>
+                <Input type="text" placeholder="search.." value={this.state.searchText} onChange={(e)=>this.handleChange(e)} />
+                <Button color="primary" onClick={this.doSearch}>Search</Button>
+            </InputGroup>
             </div>
         );
     }

@@ -16,8 +16,9 @@ class Home extends Component {
     async componentDidMount(){
         const data = await getMovies();
         const { results: movies } = data;
+        // movies.splice(15);
         this.setState({
-            movies
+            movies: movies
         })
     }
     search = async (searchText) => {

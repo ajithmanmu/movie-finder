@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { generatePosterPath } from '../common/util';
+import { Card, CardImg, CardHeader, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 class MovieClip extends Component {
     constructor(props){
@@ -18,8 +19,11 @@ class MovieClip extends Component {
             backgroundImage: `url(${posterPath})`,
         }
         return (
-            <div className="movie-finder__movieclip" style={imageClipStyle} onClick={this.handleClick}>
-                <label>{title}</label>
+            <div className="movie-finder__movieclip"  onClick={this.handleClick}>
+                <Card>
+                    <CardHeader>{title}</CardHeader>
+                    <CardImg  src={posterPath}></CardImg>
+                </Card>
             </div>
         );
     }
