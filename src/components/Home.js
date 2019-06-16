@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Header from './Header';
 import SearchBar from './SearchBar';
 import Results from './Results';
-import { getMovies, searchMovies } from '../common/api';
+import { getMovies, searchMovies, getYoutubeList, getYoutubeVideo } from '../common/api';
 import '../styles/MovieFinder.css';
 
 class Home extends Component {
@@ -10,7 +10,9 @@ class Home extends Component {
         super(props);
         this.state = {
             movies: [],
+            searchText: 'Latest Trends',
             selectedMovie: null,
+            modal: false
         }
     }
     async componentDidMount(){
@@ -18,26 +20,23 @@ class Home extends Component {
         const { results: movies } = data;
         // movies.splice(15);
         this.setState({
-            movies: movies
+            movies: movies,
         })
     }
     search = async (searchText) => {
         const data = await searchMovies(searchText);
         const { results: movies } = data;
         this.setState({
-            movies
+            movies,
+            searchText
         })
     };
     handleMovieClipClick = (movie) => {
-        this.setState ({
-            selectedMovie: movie
-        });
+        this.setState(prevState => ({
+            modal: !prevState.modal,
+            selectedMovie: !prevState.modal ? movie : null
+          }));
     };
-    closeThumbNail = () => {
-        this.setState ({
-            selectedMovie: null
-        });
-    }
     sortMovies = (sort) => {
         const { movies } = this.state;
         const sortedMovies = sort === 'Year' ? movies.sort((m1, m2)=>new Date(m1.release_date) - new Date(m2.release_date))
@@ -47,14 +46,34 @@ class Home extends Component {
             movies: sortedMovies
         });
     };
+    getMoviePlayList = async () => {
+        const { selectedMovie } = this.state;
+        const {items} = await getYoutubeList(selectedMovie.title);
+        const {id:{videoId}} = items[0];
+        // const res = await getYoutubeVideo(videoId);
+        this.setState ({
+            selectedMovie: {
+                ...selectedMovie,
+                playVideo: videoId,
+            }
+        });
+    };
 
     render(){
-        const { movies, selectedMovie } = this.state;
+        const { movies, selectedMovie, modal, searchText } = this.state;
         return(
             <div className="movie-finder__home">
                 <Header/>
                 <SearchBar search={this.search} />
-                <Results movies={movies} handleMovieClipClick={this.handleMovieClipClick} selectedMovie={selectedMovie} closeThumbNail={this.closeThumbNail} sortMovies={this.sortMovies}/>
+                <Results 
+                    movies={movies} 
+                    searchText={searchText}
+                    modal={modal} 
+                    handleMovieClipClick={this.handleMovieClipClick} 
+                    selectedMovie={selectedMovie} 
+                    sortMovies={this.sortMovies}
+                    getMoviePlayList={this.getMoviePlayList}
+                />
             </div>
         )
     }

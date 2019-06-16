@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { generatePosterPath } from '../common/util';
-import { Card, CardImg, CardHeader, CardBody, CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Card, CardImg, CardHeader } from 'reactstrap';
 
 class MovieClip extends Component {
     constructor(props){

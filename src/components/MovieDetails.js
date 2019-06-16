@@ -22,7 +22,7 @@ class MovieDetails extends Component {
     render() {
         return (
             <div className="movie-finder__movie_details">
-                <Alert color="primary" style={{marginRight: '10px'}}>Showing Results for : Latest Trends</Alert>
+                <Alert color="primary" style={{marginRight: '10px'}}>Showing Results for : {this.props.searchText}</Alert>
                     <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} >
                         <DropdownToggle caret>Sort</DropdownToggle>
                         <DropdownMenu>
